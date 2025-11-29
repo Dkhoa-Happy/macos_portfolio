@@ -81,14 +81,14 @@ const blogPosts = [
     title:
       "TypeScript Explained: What It Is, Why It Matters, and How to Master It",
     image: "/images/blog1.png",
-    link: "https://jsmastery.com/blog/typescript-explained-what-it-is-why-it-matters-and-how-to-master-it",
+    link: "https://nodejs.org/en/learn/typescript/introduction",
   },
   {
     id: 2,
     date: "Aug 28, 2025",
     title: "The Ultimate Guide to Mastering Three.js for 3D Development",
     image: "/images/blog2.png",
-    link: "https://jsmastery.com/blog/the-ultimate-guide-to-mastering-three-js-for-3d-development",
+    link: "https://youtu.be/DEeaT6FxEws?si=DcmDVO0V28lOtFej",
   },
   {
     id: 3,
@@ -102,11 +102,11 @@ const blogPosts = [
 const techStack = [
   {
     category: "Frontend",
-    items: ["React.js", "Next.js", "TypeScript"],
+    items: ["React.js", "Next.js", "TypeScript", "JavaScript"],
   },
   {
     category: "Mobile",
-    items: ["React Native", "Expo"],
+    items: ["React Native", "Expo", "Flutter"],
   },
   {
     category: "Styling",
@@ -114,7 +114,7 @@ const techStack = [
   },
   {
     category: "Backend",
-    items: ["Node.js", "Express", "NestJS", "Hono"],
+    items: ["Node.js", "Express", "NestJS"],
   },
   {
     category: "Database",
@@ -132,28 +132,28 @@ const socials = [
     text: "Github",
     icon: "/icons/github.svg",
     bg: "#f4656b",
-    link: "https://github.com/JavaScript-Mastery-Pro",
+    link: "https://github.com/Dkhoa-Happy",
   },
   {
     id: 2,
     text: "Platform",
     icon: "/icons/atom.svg",
     bg: "#4bcb63",
-    link: "https://jsmastery.com/",
+    link: "https://github.com/Dkhoa-Happy",
   },
   {
     id: 3,
-    text: "Twitter/X",
-    icon: "/icons/twitter.svg",
+    text: "Facebook",
+    icon: "/icons/facebook.svg",
     bg: "#ff866b",
-    link: "https://x.com/jsmasterypro",
+    link: "https://www.facebook.com/dkhoahappy",
   },
   {
     id: 4,
     text: "LinkedIn",
     icon: "/icons/linkedin.svg",
     bg: "#05b6f6",
-    link: "https://www.linkedin.com/company/javascriptmastery/posts/?feedView=all",
+    link: "https://www.linkedin.com/in/khoa-%C4%91%C4%83ng-7a1051356/",
   },
 ];
 
@@ -225,7 +225,7 @@ const WORK_LOCATION = {
     // ▶ Project 1
     {
       id: 5,
-      name: "Nike Ecommerce Website Application",
+      name: "Hi-Vision Website",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-10 left-5", // icon position inside Finder
@@ -233,30 +233,30 @@ const WORK_LOCATION = {
       children: [
         {
           id: 1,
-          name: "Nike Project.txt",
+          name: "Hi-Vision Project.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 left-10",
           description: [
-            "The Nike eCommerce website is a sleek and modern platform designed for shopping the latest Nike collections.",
-            "Instead of a simple online store, it delivers an immersive experience with bold visuals, interactive product displays, and smooth navigation.",
-            "Think of it like walking into a flagship Nike store—but right from your phone or laptop.",
-            "It's built with Next.js and Tailwind, ensuring fast performance, responsive design, and a clean, premium look.",
+            "Hi-Vision is a streamlined and modern platform designed for managing patient records effortlessly.",
+            "Instead of a complex database, it delivers an intuitive experience with clear data visualization, organized dashboards, and seamless workflows for medical staff.",
+            "Think of it as a digital command center for the hospital—empowering doctors and admins to access critical health insights instantly.",
+            "Built with robust technology, it ensures high security, fast performance, and a professional, responsive interface tailored for the healthcare environment.",
           ],
         },
         {
           id: 2,
-          name: "nike.com",
+          name: "hi-vision.com",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://youtu.be/fZdTYswuZjU?si=Awjl-pIst9e09_UU",
+          href: "https://hi-vision.io/",
           position: "top-10 right-20",
         },
         {
           id: 4,
-          name: "nike.png",
+          name: "hi-vision.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
@@ -269,7 +269,7 @@ const WORK_LOCATION = {
           icon: "/images/plain.png",
           kind: "file",
           fileType: "fig",
-          href: "https://google.com",
+          href: "https://www.figma.com/design/aCj9yPaQUpJDNYG3HO2JCG/Prototype?node-id=182-4850&t=Jfra5kbBa8j8mgeO-1",
           position: "top-60 right-20",
         },
       ],
@@ -278,7 +278,7 @@ const WORK_LOCATION = {
     // ▶ Project 2
     {
       id: 6,
-      name: "AI Resume Analyzer",
+      name: "Happy Paw Website",
       icon: "/images/folder.png",
       kind: "folder",
       position: "top-52 right-80",
@@ -286,30 +286,30 @@ const WORK_LOCATION = {
       children: [
         {
           id: 1,
-          name: "AI Resume Analyzer Project.txt",
+          name: "Happy Paw Website Project.txt",
           icon: "/images/txt.png",
           kind: "file",
           fileType: "txt",
           position: "top-5 right-10",
           description: [
-            "AI Resume Analyzer is a smart tool that helps you perfect your resume with instant feedback.",
-            "Instead of guessing what recruiters want, you get AI-powered insights on keywords, formatting, and overall impact.",
-            "Think of it like having a career coach—pointing out strengths, fixing weaknesses, and boosting your chances of landing interviews.",
-            "It's built with Next.js and Tailwind, so it runs fast, looks professional, and works seamlessly on any device.",
+            "Happy Paw is a comprehensive platform designed to streamline pet service bookings and luxury hotel stays.",
+            "Instead of manual scheduling or messy spreadsheets, it connects pet owners with services while providing staff and admins with powerful operational tools.",
+            "Think of it like a dedicated concierge for furry friends—ensuring seamless check-ins for pets and total control over resources for the business.",
+            "It's built with Next.js and NestJS, ensuring a scalable, high-performance architecture that remains stable and responsive for both customers and management.",
           ],
         },
         {
           id: 2,
-          name: "ai-resume-analyzer.com",
+          name: "happy-paw.com",
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://youtu.be/iYOz165wGkQ?si=R1hs8Legl200m0Cl",
+          href: "https://happy-paw-nu.vercel.app/",
           position: "top-20 left-20",
         },
         {
           id: 4,
-          name: "ai-resume-analyzer.png",
+          name: "happy-paw.png",
           icon: "/images/image.png",
           kind: "file",
           fileType: "img",
@@ -397,7 +397,7 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-10 left-5",
-      imageUrl: "/images/adrian.jpg",
+      imageUrl: "/images/dkhoa.jpg",
     },
     {
       id: 2,
@@ -406,7 +406,7 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-28 right-72",
-      imageUrl: "/images/adrian-2.jpg",
+      imageUrl: "/images/gal4.png",
     },
     {
       id: 3,
@@ -415,7 +415,7 @@ const ABOUT_LOCATION = {
       kind: "file",
       fileType: "img",
       position: "top-52 left-80",
-      imageUrl: "/images/adrian-3.jpeg",
+      imageUrl: "/images/gal3.png",
     },
     {
       id: 4,
@@ -425,12 +425,11 @@ const ABOUT_LOCATION = {
       fileType: "txt",
       position: "top-60 left-5",
       subtitle: "Meet the Developer Behind the Code",
-      image: "/images/adrian.jpg",
+      image: "/images/dkhoa.jpg",
       description: [
-        "Hey! I’m Adrian 👋, a web developer who enjoys building sleek, interactive websites that actually work well.",
-        "I specialize in JavaScript, React, and Next.js—and I love making things feel smooth, fast, and just a little bit delightful.",
-        "I’m big on clean UI, good UX, and writing code that doesn’t need a search party to debug.",
-        "Outside of dev work, you'll find me tweaking layouts at 2AM, sipping overpriced coffee, or impulse-buying gadgets I absolutely convinced myself I needed 😅",
+        "Hey! I’m Dkhoa 👋, a Front-End Developer who focuses on logic, performance, and building interactive apps with JavaScript, React, and Next.js.",
+        "While I leave the UI design to the artists, I take pride in writing clean, scalable code that works perfectly under the hood.",
+        "Outside of dev work, you won’t find me coding at 2 AM—I’m strictly in bed by 11 PM to recharge. When I'm not behind the screen, I’m usually pursuing my passion for acting or rehearsing my next role 🎬.",
       ],
     },
   ],

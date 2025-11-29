@@ -6,7 +6,7 @@ import gsap from "gsap";
 import useWindowStore from "#store/window";
 
 const Dock = () => {
-  const { openWindow, closeWindow, windows } = useWindowStore();
+  const { openWindow, focusWindow, windows } = useWindowStore();
   const dockRef = useRef(null);
 
   useGSAP(() => {
@@ -63,7 +63,7 @@ const Dock = () => {
     }
 
     if (window.isOpen) {
-      closeWindow(app.id);
+      focusWindow(app.id);
     } else {
       openWindow(app.id);
     }
