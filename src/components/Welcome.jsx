@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { useRef } from "react";
 
 const FONT_WEIGHT = {
-  subtile: { min: 100, max: 400, default: 100 },
+  subtitle: { min: 100, max: 400, default: 100 },
   title: { min: 400, max: 900, default: 400 },
 };
 
@@ -20,7 +20,7 @@ const renderText = (text, className, baseWeight = 400) => {
 };
 
 const setupTextHover = (container, type) => {
-  if (!container) return;
+  if (!container) return () => {};
 
   const letters = container.querySelectorAll("span");
   const { min, max, default: base } = FONT_WEIGHT[type];
@@ -64,7 +64,7 @@ const Welcome = () => {
 
   useGSAP(() => {
     const titleCleanup = setupTextHover(titleRef.current, "title");
-    const subtitleCleanup = setupTextHover(subtitleRef.current, "subtile");
+    const subtitleCleanup = setupTextHover(subtitleRef.current, "subtitle");
     return () => {
       titleCleanup();
       subtitleCleanup();
