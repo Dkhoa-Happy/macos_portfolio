@@ -19,11 +19,11 @@ const Dock = () => {
         const { left: iconLeft, width } = icon.getBoundingClientRect();
         const center = iconLeft - left + width / 2;
         const distance = Math.abs(mouseX - center);
-        const insentity = Math.exp(-(distance ** 2.5) / 20000);
+        const intensity = Math.exp(-(distance ** 2.5) / 20000);
 
         gsap.to(icon, {
-          scale: 1 + 0.25 * insentity,
-          y: -15 * insentity,
+          scale: 1 + 0.25 * intensity,
+          y: -15 * intensity,
           duration: 0.3,
           ease: "power1.out",
         });
