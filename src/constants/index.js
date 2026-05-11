@@ -188,19 +188,20 @@ const photosLinks = [
 const gallery = [
   {
     id: 1,
-    img: "/images/gal1.png",
+    img: "/images/gal5.JPG",
   },
+
   {
     id: 2,
-    img: "/images/gal2.png",
-  },
-  {
-    id: 3,
     img: "/images/gal3.png",
   },
   {
-    id: 4,
+    id: 3,
     img: "/images/gal4.png",
+  },
+  {
+    id: 4,
+    img: "/images/gal1.png",
   },
 ];
 
@@ -281,7 +282,7 @@ const WORK_LOCATION = {
       name: "Happy Paw Website",
       icon: "/images/folder.png",
       kind: "folder",
-      position: "top-52 right-80",
+      position: "top-52 left-40",
       windowPosition: "top-[20vh] left-7",
       children: [
         {
