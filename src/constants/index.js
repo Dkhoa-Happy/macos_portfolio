@@ -389,6 +389,29 @@ const WORK_LOCATION = {
         },
       ],
     },
+
+    // ▶ Project 5
+    {
+      id: 8,
+      name: "KoiNe",
+      icon: "/images/folder.png",
+      kind: "folder",
+      position: "top-10 left-5",
+      windowPosition: "top-[68vh] left-7",
+      children: [
+        {
+          id: 1,
+          name: "KoiNe Project.txt",
+          icon: "/images/txt.png",
+          kind: "file",
+          fileType: "txt",
+          position: "top-5 left-10",
+          description: [
+            "Developing a web-app to manage Koi fish veterinary services, including bookings, doctor assignments, customer profiles, feedback, and reporting",
+          ],
+        },
+      ],
+    },
   ],
 };
 
