@@ -15,7 +15,7 @@ const Image = () => {
         <h2>{data.name}</h2>
       </div>
 
-      <div className="image-file-content">
+      <div className="image-file-content flex-1 overflow-y-auto p-4 flex flex-col items-center justify-center bg-gray-50">
         <h1 className="image-file-title">{data.title}</h1>
 
         {data.imageUrl && (

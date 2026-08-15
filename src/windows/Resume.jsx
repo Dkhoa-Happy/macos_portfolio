@@ -25,9 +25,11 @@ const Resume = () => {
         </a>
       </div>
 
-      <Document file="files/resume.pdf">
-        <Page pageNumber={1} renderTextLayer renderAnnotationLayer />
-      </Document>
+      <div className="flex-1 overflow-y-auto flex justify-center bg-gray-100 p-4">
+        <Document file="files/resume.pdf">
+          <Page pageNumber={1} renderTextLayer renderAnnotationLayer />
+        </Document>
+      </div>
     </>
   );
 };

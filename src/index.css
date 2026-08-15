@@ -99,27 +99,42 @@ body {
   }
 
   #window-controls {
-    @apply flex gap-2;
+    @apply flex items-center gap-2 select-none;
 
     .close {
-      @apply size-3.5 rounded-full bg-[#ff6157] cursor-pointer;
+      @apply size-3.5 rounded-full bg-[#ff5f56] hover:bg-[#e0443e] active:bg-[#c9322c] border border-black/10 transition-colors cursor-pointer;
     }
 
     .minimize {
-      @apply size-3.5 rounded-full bg-[#ffc030];
+      @apply size-3.5 rounded-full bg-[#ffbd2e] hover:bg-[#dea123] active:bg-[#c48d1b] border border-black/10 transition-colors cursor-pointer;
     }
 
     .maximize {
-      @apply size-3.5 rounded-full bg-[#2acb42];
+      @apply size-3.5 rounded-full bg-[#27c93f] hover:bg-[#1aab29] active:bg-[#159423] border border-black/10 transition-colors cursor-pointer;
     }
   }
 
+  .window-maximized {
+    top: 36px !important;
+    left: 10px !important;
+    right: 10px !important;
+    bottom: 84px !important;
+    width: calc(100vw - 20px) !important;
+    max-width: none !important;
+    height: calc(100vh - 120px) !important;
+    max-height: none !important;
+    transform: translate3d(0px, 0px, 0px) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
+    z-index: 40;
+  }
+
   #window-header {
-    @apply flex items-center justify-between px-4 py-3 rounded-t-lg bg-gray-50 border-b border-gray-200 select-none text-sm text-gray-400;
+    @apply flex items-center justify-between px-4 py-2.5 rounded-t-lg bg-gray-50/90 backdrop-blur-md border-b border-gray-200 select-none text-sm text-gray-500 cursor-default flex-none;
   }
 
   #safari {
-    @apply w-4xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-4xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col max-h-[75vh];
 
     .search {
       @apply flex items-center gap-3 w-2/3 bg-white border border-gray-300 rounded-lg px-3 py-2;
@@ -130,7 +145,7 @@ body {
     }
 
     .blog {
-      @apply bg-white p-10 max-w-3xl mx-auto;
+      @apply bg-white p-10 max-w-3xl mx-auto flex-1 overflow-y-auto w-full;
 
       h2 {
         @apply text-xl font-bold text-pink-600 mb-10;
@@ -163,14 +178,14 @@ body {
   }
 
   #terminal {
-    @apply w-xl absolute top-32 left-1/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-xl absolute top-32 left-1/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col max-h-[75vh];
 
     h2 {
       @apply font-bold text-sm text-center w-full;
     }
 
     .techstack {
-      @apply text-sm font-roboto p-5;
+      @apply text-sm font-roboto p-5 flex-1 overflow-y-auto;
 
       .command-text {
         @apply flex items-center gap-1;
@@ -217,7 +232,7 @@ body {
   }
 
   #contact {
-    @apply max-w-2xl absolute top-60 left-5/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply max-w-2xl absolute top-60 left-5/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col max-h-[75vh];
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -245,10 +260,10 @@ body {
   }
 
   #photos {
-    @apply max-w-3xl absolute top-96 left-1/2 -translate-y-1/2 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply max-w-3xl absolute top-96 left-1/2 -translate-y-1/2 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col max-h-[75vh];
 
     .sidebar {
-      @apply w-3/12 flex-none bg-gray-50 border-r border-gray-200 flex flex-col p-5;
+      @apply w-48 flex-none bg-gray-50 border-r border-gray-200 flex flex-col p-5 overflow-y-auto;
 
       h2 {
         @apply text-xs font-medium text-gray-400 mb-1;
@@ -274,7 +289,7 @@ body {
     }
 
     .gallery {
-      @apply p-5 flex-1;
+      @apply p-5 flex-1 overflow-y-auto;
 
       ul {
         @apply grid grid-cols-5 gap-2.5;
@@ -306,7 +321,7 @@ body {
   }
 
   #resume {
-    @apply w-fit h-fit absolute top-16 left-7/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-fit h-fit max-h-[85vh] absolute top-16 left-7/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col;
 
     #window-header {
       h2 {
@@ -316,10 +331,10 @@ body {
   }
 
   #finder {
-    @apply absolute w-3xl left-40 top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl;
+    @apply absolute w-3xl left-40 top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl flex flex-col max-h-[75vh];
 
     .sidebar {
-      @apply w-48 bg-gray-50 border-r border-gray-200 flex flex-col p-5 space-y-3;
+      @apply w-48 bg-gray-50 border-r border-gray-200 flex flex-col p-5 space-y-3 flex-none overflow-y-auto;
 
       h3 {
         @apply text-xs font-medium text-gray-400 mb-1;
@@ -343,10 +358,10 @@ body {
     }
 
     .content {
-      @apply flex-1 p-8 bg-white max-w-2xl relative;
+      @apply flex-1 p-8 bg-white max-w-none relative overflow-y-auto min-h-[350px];
 
       li {
-        @apply absolute flex items-center flex-col gap-3;
+        @apply absolute flex items-center flex-col gap-3 cursor-pointer;
 
         img {
           @apply object-contain object-center size-16 relative group-hover:scale-105;
@@ -360,7 +375,7 @@ body {
   }
 
   #txtfile {
-    @apply w-md absolute top-36 right-32 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-md absolute top-36 right-32 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col max-h-[75vh];
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -368,7 +383,7 @@ body {
   }
 
   #imgfile {
-    @apply w-xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col max-h-[75vh];
 
     #window-header {
       p {
@@ -377,7 +392,7 @@ body {
     }
 
     .preview {
-      @apply p-2 bg-gray-200 max-h-[70vh];
+      @apply p-2 bg-gray-200 flex-1 overflow-y-auto flex items-center justify-center;
 
       img {
         @apply w-full h-fit object-contain object-center;

@@ -55,15 +55,19 @@ const Dock = () => {
   const toggleApp = (app) => {
     if (!app.canOpen) return;
 
-    const window = windows[app.id];
+    const win = windows[app.id];
 
-    if (!window) {
+    if (!win) {
       console.error(`Window not found for app: ${app.id}`);
       return;
     }
 
-    if (window.isOpen) {
-      focusWindow(app.id);
+    if (win.isOpen) {
+      if (win.isMinimized) {
+        openWindow(app.id);
+      } else {
+        focusWindow(app.id);
+      }
     } else {
       openWindow(app.id);
     }
@@ -72,27 +76,33 @@ const Dock = () => {
   return (
     <section id="dock">
       <div ref={dockRef} className="dock-container">
-        {dockApps.map(({ id, name, icon, canOpen }) => (
-          <div key={id} className="relative flex justify-center">
-            <button
-              type="button"
-              className="dock-icon"
-              aria-label={name}
-              data-tooltip-id="dock-tooltip"
-              data-tooltip-content={name}
-              data-tooltip-delay-show={150}
-              disabled={!canOpen}
-              onClick={() => toggleApp({ id, canOpen })}
-            >
-              <img
-                src={`images/${icon}`}
-                alt={name}
-                loading="lazy"
-                className={canOpen ? "" : "opacity-60"}
-              />
-            </button>
-          </div>
-        ))}
+        {dockApps.map(({ id, name, icon, canOpen }) => {
+          const isOpen = windows[id]?.isOpen;
+          return (
+            <div key={id} className="relative flex flex-col items-center justify-center">
+              <button
+                type="button"
+                className="dock-icon"
+                aria-label={name}
+                data-tooltip-id="dock-tooltip"
+                data-tooltip-content={name}
+                data-tooltip-delay-show={150}
+                disabled={!canOpen}
+                onClick={() => toggleApp({ id, canOpen })}
+              >
+                <img
+                  src={`images/${icon}`}
+                  alt={name}
+                  loading="lazy"
+                  className={canOpen ? "" : "opacity-60"}
+                />
+              </button>
+              {isOpen && (
+                <span className="size-1 rounded-full bg-black/70 dark:bg-white/80 absolute -bottom-1 pointer-events-none" />
+              )}
+            </div>
+          );
+        })}
         <Tooltip id="dock-tooltip" place="top" className="tooltip" />
       </div>
     </section>

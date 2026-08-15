@@ -15,7 +15,7 @@ const Text = () => {
         <h2>{data.name}</h2>
       </div>
 
-      <div className="p-5 space-y-6 bg-white">
+      <div className="p-5 space-y-6 bg-white flex-1 overflow-y-auto">
         {data.subtitle && (
           <h2 className="text-file-subtitle">{data.subtitle}</h2>
         )}

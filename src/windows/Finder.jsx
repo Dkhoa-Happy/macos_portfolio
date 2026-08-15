@@ -45,7 +45,7 @@ const Finder = () => {
         <Search clasName="icon" />
       </div>
 
-      <div className="bg-white flex h-full">
+      <div className="bg-white flex flex-1 w-full overflow-hidden min-h-0">
         <div className="sidebar">
           {renderList("Favorites", Object.values(locations))}
 

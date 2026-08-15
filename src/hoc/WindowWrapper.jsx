@@ -2,43 +2,128 @@ import useWindowStore from "#store/window";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Draggable } from "gsap/Draggable";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useEffect } from "react";
 
 const WindowWrapper = (Component, windowkey) => {
   const Wrapped = (props) => {
-    const { focusWindow, windows } = useWindowStore();
-    const { isOpen, zIndex } = windows[windowkey];
+    const { focusWindow, toggleMaximize, windows } = useWindowStore();
+    const winState = windows[windowkey] || {
+      isOpen: false,
+      isMinimized: false,
+      isMaximized: false,
+      zIndex: 1000,
+    };
+    const { isOpen, isMinimized, isMaximized, zIndex } = winState;
     const ref = useRef(null);
+    const draggableInstanceRef = useRef(null);
+    const prevOpenRef = useRef(false);
+    const prevMinimizedRef = useRef(false);
 
+    // GSAP Draggable Setup
     useGSAP(() => {
+      const el = ref.current;
+      if (!el) return;
+
+      const [instance] = Draggable.create(el, {
+        onPress: () => focusWindow(windowkey),
+        edgeResistance: 0.7,
+        type: "x,y",
+      });
+      draggableInstanceRef.current = instance;
+
+      return () => {
+        if (instance) instance.kill();
+      };
+    }, []);
+
+    // Disable dragging when maximized, re-enable when restored
+    useEffect(() => {
+      const instance = draggableInstanceRef.current;
+      if (!instance) return;
+      if (isMaximized) {
+        instance.disable();
+      } else {
+        instance.enable();
+      }
+    }, [isMaximized]);
+
+    // Handle Open Animation
+    useEffect(() => {
+      const el = ref.current;
+      if (!el) return;
+
+      if (isOpen && !prevOpenRef.current && !isMinimized) {
+        el.style.display = "flex";
+        gsap.fromTo(
+          el,
+          { scale: 0.85, opacity: 0, y: 30 },
+          { scale: 1, opacity: 1, y: 0, duration: 0.25, ease: "power3.out" }
+        );
+      }
+      prevOpenRef.current = isOpen;
+    }, [isOpen, isMinimized]);
+
+    // Handle Minimize / Restore Animation
+    useEffect(() => {
       const el = ref.current;
       if (!el || !isOpen) return;
 
-      el.style.display = "block";
-      gsap.fromTo(
-        el,
-        { scale: 0.8, opacity: 0, y: 40 },
-        { scale: 1, opacity: 1, y: 0, duration: 0.2, ease: "power3.out" }
-      );
-    }, [isOpen]);
+      if (isMinimized && !prevMinimizedRef.current) {
+        // Minimizing window towards dock
+        gsap.to(el, {
+          scale: 0.2,
+          y: 400,
+          opacity: 0,
+          duration: 0.28,
+          ease: "power2.in",
+          onComplete: () => {
+            if (el) el.style.display = "none";
+          },
+        });
+      } else if (!isMinimized && prevMinimizedRef.current) {
+        // Restoring window from dock
+        el.style.display = "flex";
+        gsap.fromTo(
+          el,
+          { scale: 0.2, y: 400, opacity: 0 },
+          { scale: 1, y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }
+        );
+      }
+      prevMinimizedRef.current = isMinimized;
+    }, [isMinimized, isOpen]);
 
-    useGSAP(() => {
-      const el = ref.current;
-      if (!el) return;
-      const [instance] = Draggable.create(el, {
-        onPress: () => focusWindow(windowkey),
-      });
-      return () => instance.kill();
-    }, []);
-
+    // Initial / layout visibility
     useLayoutEffect(() => {
       const el = ref.current;
       if (!el) return;
-      el.style.display = isOpen ? "block" : "none";
-    }, [isOpen]);
+      if (!isOpen || isMinimized) {
+        el.style.display = "none";
+      } else {
+        el.style.display = "flex";
+      }
+    }, [isOpen, isMinimized]);
+
+    // Double click header to toggle maximize (like real macOS)
+    const handleDoubleClick = (e) => {
+      if (e.target.closest("#window-controls") || e.target.closest("button") || e.target.closest("input")) {
+        return;
+      }
+      if (e.target.closest("#window-header")) {
+        toggleMaximize(windowkey);
+      }
+    };
 
     return (
-      <section id={windowkey} ref={ref} style={{ zIndex }} className="absolute">
+      <section
+        id={windowkey}
+        ref={ref}
+        style={{ zIndex }}
+        onMouseDown={() => focusWindow(windowkey)}
+        onDoubleClick={handleDoubleClick}
+        className={`absolute flex flex-col transition-all duration-300 ease-out ${
+          isMaximized ? "window-maximized" : ""
+        }`}
+      >
         <Component {...props} />
       </section>
     );

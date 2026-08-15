@@ -5,7 +5,7 @@ import useWindowStore from "#store/window";
 import { Mail, Search } from "lucide-react";
 
 const Photos = () => {
-  const openWindow = useWindowStore();
+  const { openWindow } = useWindowStore();
 
   return (
     <>
@@ -17,7 +17,7 @@ const Photos = () => {
         </div>
       </div>
 
-      <div className="flex w-full">
+      <div className="flex w-full flex-1 overflow-hidden min-h-0">
         <div className="sidebar">
           <h2>Photos</h2>
 
@@ -37,13 +37,13 @@ const Photos = () => {
               <li
                 key={id}
                 onClick={() =>
-                  openWindow("imgFile", {
+                  openWindow("imgfile", {
                     id,
                     name: "Gallery image",
                     icon: "/images/images.png",
                     kind: "file",
                     fileType: "img",
-                    imageUrl: "img",
+                    imageUrl: img,
                   })
                 }
               >
